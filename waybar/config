@@ -1,0 +1,143 @@
+{
+   "layer": "top",
+   "height": 32,
+   "modules-left": ["custom/launcher","cpu","memory","disk","network", "custom/media","tray"],
+   "modules-center": ["hyprland/workspaces"],
+   "modules-right": ["custom/updates","custom/wallpaper","backlight","pulseaudio","clock","bluetooth", "battery","custom/power"],
+   "disk": {
+       "format": " {percentage_free}%",
+       "path": "/home"
+   },
+   "hyprland/workspaces": {
+       "format": "{name}",
+       "format-icons": {
+           "active": "󰩃",
+           "default": "󰄛",
+           "empty": "󱩡",
+           "persistent": "󰳆",
+           "special": "",
+           "urgent": "",
+       }
+   },
+   "pulseaudio": {
+       	"tooltip": false, 
+       	"scroll-step": 5,
+       	"format": "{icon} {volume}%",
+       	"format-muted": " ",
+       	"format-icons": {
+            "default": ["", "", ""]
+       	}
+   },
+
+   "river/tags": {
+       	"num-tags": 6
+   },
+   "network": {
+       "interval": 1,
+       "tooltip": true,
+       "format": "󰶣 {bandwidthUpBytes} 󰶡 {bandwidthDownBytes}",
+       "format-wifi": "  󰶣 {bandwidthUpBytes} 󰶡 {bandwidthDownBytes}",
+       "format-ethernet": "  󰶣 {bandwidthUpBytes} 󰶡 {bandwidthDownBytes}",
+       "format-linked": "󱘖 ",
+       "format-disconnected": " "
+   },
+   "tray":{
+       "icon-size":18,
+       "spacing": 10
+   },
+   "memory": {
+       "interval": 30,
+       "format": " {}%",
+       "max-length": 10
+   },
+   "custom/media": {
+       "interval": 30,
+       "format": "{icon} {}",
+       "return-type": "json",
+       "max-length": 20,
+       "format-icons": {
+           "spotify": " ",
+           "default": " "
+       },
+       "escape": true,
+       "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
+       "on-click": "playerctl play-pause"
+   },
+   "custom/launcher":{
+       "format": " ",
+       "on-click": "rofi -show drun",
+       "on-click-right": "killall rofi"
+   },
+   "custom/power":{
+       "format": " ",
+       "on-click": "bash ~/.config/rofi/leave/leave.sh",
+   },
+   "custom/updates":{
+       "format": "{} Update(s)",
+       "exec": "checkupdates | wc -l",
+       "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+       "interval": 15,
+       "on-click": "kitty --hold sh -c paru -Syyu --noconfirm && hyprctl notify 1 5000 b8bb26 'yay -Syyu done' "
+   },
+   "custom/wallpaper":{
+       "format":" ",
+       "on-click": "bash ~/.config/system_scripts/pkill_bc"
+   },
+   "battery": {
+       "states": {
+           "good": 95,
+           "warning": 30,
+           "critical": 20
+       },
+       "format": "{icon} {capacity}%",
+       "format-charging": " {capacity}%",
+       "format-plugged": " {capacity}%",
+       "format-alt": "{time} {icon}",
+       "format-icons": ["", "", "", "", ""],
+       "tooltip-format": "{timeTo}\n{power}W\n{cycles}\n{health}%"
+   },
+   "bluetooth": {
+       "format": "󰂲",
+       "format-disabled": "",
+       "format-off": "󰂲",
+       "format-on": "󰂯",
+       "format-connected": "󰂱",
+       "tooltip-format": "{status}\n{num_connections}\n{controller_address}\n{controller_address_type}\n{controller_alias}\n{device_address_type}\n{device_alias}\n{device_enumerate}"
+   },
+   "cpu": {
+       "interval": 15,
+       "format": " {}%",
+       "max-length": 10
+   },
+   "clock": {
+       "format": " {:%H:%M %p  %Y-%m-%d}",
+       "tooltip-format": "<tt><small>{calendar}</small></tt>",
+       "calendar": {
+           "mode"          : "year",
+           "mode-mon-col"  : 3,
+           "weeks-pos"     : "right",
+           "on-scroll"     : 1,
+           "format": {
+               "months":     "<span color='#ffead3'><b>{}</b></span>",
+               "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+               "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+               "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+               "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+               }
+           },
+       "actions":  {
+           "on-click-right": "mode",
+           "on-scroll-up": "tz_up",
+           "on-scroll-down": "tz_down",
+           "on-scroll-up": "shift_up",
+           "on-scroll-down": "shift_down"
+       }
+   },
+   "backlight": {
+       "tooltip": false,
+       "format": " {percent}%",
+       "interval":1,
+       "on-scroll-up": "brightnessctl s 1%-",
+       "on-scroll-down": "brightnessctl s 1%+"
+   }
+}
