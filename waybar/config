@@ -1,26 +1,39 @@
 {
    "layer": "top",
-   "height": 32,
-   "modules-left": ["custom/launcher","cpu","memory","disk","network", "custom/media","tray"],
+   "position": "top",
+   "height": 28,
+   "modules-left": ["custom/launcher","clock", "custom/weather","disk","memory","cpu","temperature", "tray"],
    "modules-center": ["hyprland/workspaces"],
-   "modules-right": ["custom/updates","custom/wallpaper","backlight","pulseaudio","clock","bluetooth", "battery","custom/power"],
+   "modules-right": [ "backlight", "pulseaudio", "bluetooth", "network", "battery"],
    "disk": {
-       "format": " {percentage_free}%",
+       "format": " {percentage_used}%",
        "path": "/home"
    },
+   "temperature": {
+        "format": " {temperatureC}°C",            
+        "format-critical": " {temperatureC}°C",
+        "interval": 1,
+        "critical-threshold": 80
+    },
    "hyprland/workspaces": {
-       "format": "{name}",
+       "format": "{icon}",
        "format-icons": {
-           "active": "󰩃",
-           "default": "󰄛",
-           "empty": "󱩡",
-           "persistent": "󰳆",
-           "special": "",
-           "urgent": "",
+            "1": "",
+            "2": "󱁂",
+            "3": "󱁄",
+            "4": "󱨎",
+            "5": "󱁆",
+            "6": "󱁇",
+            "7": "",
+            "8": "",
+            "9": "",
+            "0": "",
+           "active": "",
+           "default": "",
        }
    },
    "pulseaudio": {
-       	"tooltip": false, 
+       	"tooltip": true, 
        	"scroll-step": 5,
        	"format": "{icon} {volume}%",
        	"format-muted": " ",
@@ -42,12 +55,12 @@
        "format-disconnected": " "
    },
    "tray":{
-       "icon-size":18,
+       "icon-size":14,
        "spacing": 10
    },
    "memory": {
-       "interval": 30,
-       "format": " {}%",
+       "interval": 1,
+       "format": " {percentage}%",
        "max-length": 10
    },
    "custom/media": {
@@ -105,8 +118,8 @@
        "tooltip-format": "{status}\n{num_connections}\n{controller_address}\n{controller_address_type}\n{controller_alias}\n{device_address_type}\n{device_alias}\n{device_enumerate}"
    },
    "cpu": {
-       "interval": 15,
-       "format": " {}%",
+       "interval": 1,
+       "format": " {usage}%",
        "max-length": 10
    },
    "clock": {
