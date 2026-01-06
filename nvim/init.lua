@@ -15,5 +15,10 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
+vim.keymap.set("i", "<C-B>", 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false,
+})
+
 require "lazy_setup"
 require "polish"

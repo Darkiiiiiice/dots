@@ -1,7 +1,7 @@
 vim:fileencoding=utf-8:foldmethod=marker
 
 # BEGIN_KITTY_THEME
-# Gruvbox Dark
+# Gruvbox Material Dark Medium
 include current-theme.conf
 # END_KITTY_THEME
 
@@ -10,8 +10,7 @@ include current-theme.conf
 #: kitty has very powerful font management. You can configure
 #: individual font faces and even specify special fonts for particular
 #: characters.
-
-font_family      JetBrainsMono Nerd Font
+# font_family      JetBrainsMono Nerd Font
 # bold_font        auto
 # italic_font      auto
 # bold_italic_font auto
@@ -153,7 +152,7 @@ font_size 12.0
 #: suffix px for pixels or % for percentage of original value. No
 #: suffix means use pts. For example::
 
-modify_font underline_position -3
+modify_font underline_position 0
 modify_font underline_thickness 150%
 modify_font strikethrough_position 2px
 
@@ -1190,12 +1189,11 @@ tab_title_template "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{title
 
 #: Template to use for active tabs. If not specified falls back to
 #: tab_title_template.
-
-active_tab_foreground   #ebdbb2
-active_tab_background   #d79921
+# active_tab_foreground   #ebdbb2
+# active_tab_background   #d79921
 active_tab_font_style   bold-italic
-inactive_tab_foreground #ebdbb2
-inactive_tab_background #504945
+# inactive_tab_foreground #ebdbb2
+# inactive_tab_background #504945
 inactive_tab_font_style normal
 
 #: Tab bar colors and styles.
@@ -1792,8 +1790,7 @@ background_blur 6
 #: }}}
 
 #: OS specific tweaks {{{
-
-wayland_titlebar_color system
+# wayland_titlebar_color system
 
 #: The color of the kitty window's titlebar on Wayland systems with
 #: client side window decorations such as GNOME. A value of system
@@ -1943,6 +1940,7 @@ wayland_enable_ime yes
 #: available here <https://sw.kovidgoyal.net/kitty/actions/>.
 
 kitty_mod ctrl+shift
+map kitty_mod+L clear_terminal reset active
 
 #: Special modifier key alias for default shortcuts. You can change
 #: the value of this option to alter all default shortcuts that use
@@ -2642,3 +2640,11 @@ map kitty_mod+j       scroll_line_down
 #: }}}
 
 #: }}}
+
+
+# BEGIN_KITTY_FONTS
+font_family      family="JetBrainsMono Nerd Font Mono"
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+# END_KITTY_FONTS
