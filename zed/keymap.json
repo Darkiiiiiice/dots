@@ -1,0 +1,88 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "alt-e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-a": "agent::ToggleFocus"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-n": "terminal_panel::Toggle"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-g": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "CommitEditor",
+    "bindings": {
+      "escape": "git_panel::ToggleTreeView"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-d": "debug_panel::ToggleFocus"
+    }
+  },
+  {
+    "bindings": {
+      "f10": "debugger::StepOver"
+    }
+  },
+  {
+    "bindings": {
+      "f11": "debugger::StepInto"
+    }
+  },
+  {
+    "bindings": {
+      "f12": "debugger::StepOut"
+    }
+  },
+  {
+    "bindings": {
+      "f3": "debugger::Stop"
+    }
+  },
+  {
+    "bindings": {
+      "alt-z": "zed::ToggleFullScreen"
+    }
+  }
+]

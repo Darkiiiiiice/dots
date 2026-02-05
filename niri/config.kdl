@@ -106,9 +106,19 @@ output "eDP-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=2560 y=0
+    position x=0 y=0
     variable-refresh-rate on-demand=true
     focus-at-startup
+}
+
+output "HDMI-A-1" {
+	mode "1920x1080@60.000"
+	scale 1
+	transform "normal"
+	position x=0 y=-1440
+	variable-refresh-rate on-demand=false
+
+
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -326,7 +336,7 @@ environment {
     HYPRCURSOR_SIZE "32"
 
     QT_QPA_PLATFORM "wayland;xcb"
-    QT_SCALE_FACTOR "1.5"
+    QT_SCALE_FACTOR "1.2"
     QT_AUTO_SCREEN_SCALE_FACTOR "1"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 
@@ -477,6 +487,19 @@ window-rule {
     max-height 300
     min-height 100
 }
+window-rule {
+    match app-id=r#"xdg-desktop-portal-gtk"#
+    default-column-width {}
+    default-column-display "tabbed"
+    open-floating true
+    open-maximized false
+    open-maximized-to-edges false
+    open-fullscreen false
+    min-width 500
+    max-width 800
+    max-height 300
+    min-height 800
+}
 
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
@@ -522,8 +545,10 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return cooldown-ms=500 hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    // Mod+Return cooldown-ms=500 hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    Mod+Return cooldown-ms=500 hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+D cooldown-ms=500 { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+G cooldown-ms=500 { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     // Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
@@ -722,7 +747,7 @@ binds {
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+V { maximize-column; }
-    Mod+Shift+V { fullscreen-window; }
+    Mod+Z { fullscreen-window; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".

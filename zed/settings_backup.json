@@ -7,7 +7,6 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "text_rendering_mode": "platform_default",
   "agent_servers": {
     "codex": {
       "favorite_models": [
@@ -17,7 +16,6 @@
       "favorite_config_option_values": {}
     },
     "OpenCode": {
-      "type": "custom",
       "command": "opencode",
       "args": [
         "acp"
@@ -81,8 +79,8 @@
   "prettier": {
     "allowed": true,
   },
-  "ui_font_weight": 400,
-  "ui_font_family": "FiraCode Nerd Font Mono",
+  "ui_font_weight": 400.0,
+  "ui_font_family": "FiraCode Nerd Font",
   "buffer_line_height": "comfortable",
   "buffer_font_weight": 400.0,
   "vim_mode": true,
